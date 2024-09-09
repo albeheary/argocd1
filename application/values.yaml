@@ -55,7 +55,7 @@ ingress:
         - path: / 
           pathType: ext-demo.lakeshoredevops.com
   tls: 
-   - secretName: argo-demo-tls
+   - secretName: ext-tls
      hosts:
        - ext-demo.lakeshoredevops.com
 

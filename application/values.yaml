@@ -55,7 +55,7 @@ ingress:
         - path: / 
           pathType: argocd1.lakeshoredevops.com
   tls: 
-   - secretName: ext-tls
+   - secretName: argocd1-tls
      hosts:
        - argocd1.lakeshoredevops.com
 

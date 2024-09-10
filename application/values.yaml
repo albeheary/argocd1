@@ -50,14 +50,14 @@ ingress:
     acme.cert-manager.io/http01-edit-in-place: "true"
 
   hosts:
-    - host: argocd1.lakeshoredevops.com
+    - host: ext-demo.lakeshoredevops.com
       paths:
         - path: / 
-          pathType: argocd1.lakeshoredevops.com
+          pathType: ext-demo.lakeshoredevops.com
   tls: 
    - secretName: ext-tls
      hosts:
-       - argocd1.lakeshoredevops.com
+       - ext-demo.lakeshoredevops.com
 
 resources: 
   # We usually recommend not to specify default resources and to leave this as a conscious

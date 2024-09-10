@@ -8,7 +8,7 @@ image:
   repository: nginx
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "latest"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -43,31 +43,31 @@ service:
 ingress:
   enabled: true
   className: "nginx"
-  annotations: 
+  annotations:
     nginx.ingress.kubernetes.io/proxy-body-size: "0"
     ingress.kubernetes.io/ssl-redirect: "false"
     cert-manager.io/cluster-issuer: letsencrypt-prod
     acme.cert-manager.io/http01-edit-in-place: "true"
-
   hosts:
-    - host: argocd1.lakeshoredevops.com
+    - host: argo-demo.lakeshoredevops.com
       paths:
         - path: /
-  tls: 
-   - secretName: argocd1-tls
+          pathType: ImplementationSpecific
+  tls:
+   - secretName: argocd-demo-tls
      hosts:
-       - argocd1.lakeshoredevops.com
+       - argo-demo.lakeshoredevops.com
 
-resources: 
+resources:
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
     memory: 128Mi
 
 autoscaling:
@@ -75,10 +75,12 @@ autoscaling:
   minReplicas: 1
   maxReplicas: 100
   targetCPUUtilizationPercentage: 80
-  # targetMemoryUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80
 
 nodeSelector: {}
 
 tolerations: []
 
 affinity: {}
+
+#

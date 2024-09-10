@@ -52,7 +52,7 @@ ingress:
     - host: ext-demo.lakeshoredevops.com
       paths:
         - path: /
-          pathType: ext-demo.lakeshoredevops.com
+          pathType: ImplementationSpecific
   tls:
    - secretName: ext-demo-tls
      hosts:
